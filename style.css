@@ -1,0 +1,573 @@
+/* ==========================================================================
+   FARBPALETTE & GLOBALE VARIABLEN
+   ========================================================================== */
+:root {
+    --primary-blue: #1c5a93;   /* Das markante Dunkelblau aus dem Logo */
+    --secondary-cyan: #6ecee6; /* Das frische Cyan/Hellblau aus dem Logo */
+    --light-cyan: #bcecf7;     /* Sehr sanftes Cyan für dezente Akzente */
+    --accent-red: #D62828;     /* Kontrastfarbe für wichtige Buttons/Ränder */
+    --text-color: #ffffff;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+    line-height: 1.6;
+    /* Der globale Hintergrund ist nun perfekt auf die Logofarben abgestimmt */
+    background: linear-gradient(135deg, rgba(28, 90, 147, 0.9) 0%, rgba(28, 90, 147, 0.75) 100%), 
+                url('dinesten (2).jpeg') center/cover no-repeat fixed;
+}
+
+/* ==========================================================================
+   CUSTOM SCROLLBAR
+   ========================================================================== */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--secondary-cyan);
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--light-cyan);
+}
+
+/* ==========================================================================
+   HEADER & NAVIGATION (Glassmorphism Effect)
+   ========================================================================== */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background-color: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 800;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    letter-spacing: 0.5px;
+}
+
+.logo img {
+    height: 48px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover img {
+    transform: rotate(-5px) scale(1.05);
+}
+
+nav a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 600;
+    margin-left: 30px;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s, transform 0.3s;
+}
+
+/* Unterstrich-Animation beim Drüberschweben */
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--secondary-cyan);
+    transition: width 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--secondary-cyan);
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* ==========================================================================
+   HERO / BANNER BEREICH
+   ========================================================================== */
+.hero {
+    position: relative;
+    text-align: center;
+    padding: 160px 20px;
+}
+
+.hero h1 {
+    font-size: 56px;
+    margin-bottom: 20px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+.hero p {
+    font-size: 22px;
+    max-width: 750px;
+    margin: 0 auto 45px auto;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+/* Pulsierender CTA Button */
+.cta-btn {
+    background: linear-gradient(90deg, var(--accent-red) 0%, #F77F00 100%);
+    color: white;
+    padding: 16px 40px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 50px;
+    box-shadow: 0 6px 20px rgba(214, 40, 40, 0.4);
+    transition: all 0.3s ease;
+    display: inline-block;
+    letter-spacing: 0.5px;
+}
+
+.cta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(214, 40, 40, 0.6);
+}
+
+/* ==========================================================================
+   ALLGEMEINE SEKTIONEN & ÜBERSCHRIFTEN
+   ========================================================================== */
+section {
+    padding: 100px 5%;
+}
+
+.section-title {
+    text-align: center;
+    color: #ffffff;
+    font-size: 40px;
+    font-weight: 800;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--secondary-cyan);
+    font-size: 15px;
+    margin-bottom: 60px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   NEUES DIENSTLEISTUNGS-LAYOUT (Große, abwechselnde Blöcke)
+   ========================================================================== */
+.services-bg {
+    background: transparent;
+}
+
+.services-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-block {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-left: 6px solid var(--secondary-cyan);
+    border-radius: 16px;
+    padding: 45px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Jedes zweite Element wird automatisch horizontal umgedreht (Bild links, Text rechts) */
+.service-block:nth-child(even) {
+    flex-direction: row-reverse;
+    border-left: 1px solid rgba(255, 255, 255, 0.15);
+    border-right: 6px solid var(--secondary-cyan);
+}
+
+.service-block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(110, 206, 230, 0.25);
+}
+
+.service-content {
+    flex: 1.2;
+}
+
+.service-content h3 {
+    font-size: 28px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-weight: 700;
+    color: #ffffff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    padding-bottom: 12px;
+}
+
+.service-content p {
+    font-size: 17px;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    font-weight: 300;
+    line-height: 1.8;
+}
+
+.service-image-wrapper {
+    flex: 0.8;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    height: 320px; /* Einheitliche Höhe für alle Bilder */
+}
+
+.service-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.service-block:hover .service-image-wrapper img {
+    transform: scale(1.05);
+}
+
+/* ==========================================================================
+   ALBUM / PORTFOLIO GRID
+   ========================================================================== */
+.album-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 25px;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+.album-item {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    height: 280px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.album-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: block;
+}
+
+.album-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(28, 90, 147, 0.95) 0%, rgba(28, 90, 147, 0.4) 75%, rgba(28, 90, 147, 0) 100%);
+    padding: 30px 20px 20px 20px;
+    color: white;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+.album-overlay h4 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.album-item:hover img {
+    transform: scale(1.08);
+}
+
+.album-item:hover .album-overlay {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* ==========================================================================
+   FOOTER BEREICH (An die neuen Farben angeglichen)
+   ========================================================================== */
+footer {
+    background-color: rgba(28, 90, 147, 0.85); 
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    color: white;
+    padding: 80px 5% 40px 5%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+footer h4 {
+    color: var(--secondary-cyan);
+    font-size: 22px;
+    margin-bottom: 25px;
+    font-weight: 700;
+    position: relative;
+}
+
+footer h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 40px;
+    height: 2px;
+    background-color: var(--accent-red);
+}
+
+footer p {
+    margin: 8px 0;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 300;
+}
+
+footer a {
+    color: #bcecf7;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    background-color: rgba(18, 60, 100, 0.95);
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    font-weight: 300;
+}
+
+/* ==========================================================================
+   RESPONSIVENESS & SKALIERBARKEIT (Mobil- & Tabletansichten)
+   ========================================================================== */
+@media (max-width: 992px) {
+    .hero h1 { font-size: 46px; }
+    .hero p { font-size: 18px; }
+    section { padding: 80px 5%; }
+    
+    /* Schaltet bei Mobilgeräten das seitliche Layout untereinander, um Stauchung zu verhindern */
+    .service-block, .service-block:nth-child(even) {
+        flex-direction: column;
+        padding: 30px;
+        border-left: 1px solid rgba(255, 255, 255, 0.15);
+        border-right: 1px solid rgba(255, 255, 255, 0.15);
+        border-top: 6px solid var(--secondary-cyan);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    
+    .service-image-wrapper {
+        width: 100%;
+        height: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 20px;
+        text-align: center;
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        width: 100%;
+    }
+
+    nav a {
+        margin-left: 0;
+        font-size: 15px;
+        padding: 5px 10px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 6px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .hero {
+        padding: 100px 20px;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+        letter-spacing: -0.5px;
+    }
+
+    .hero p {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+
+    .cta-btn {
+        padding: 14px 30px;
+        font-size: 16px;
+    }
+
+    .section-title {
+        font-size: 30px;
+    }
+
+    .section-subtitle {
+        font-size: 13px;
+        margin-bottom: 40px;
+    }
+
+    .album-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .album-item {
+        height: 240px;
+    }
+}
+
+    /* ==========================================================================
+   SLIDESHOW / CAROUSEL
+   ========================================================================== */
+.slider-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 14px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.slider-track {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.slide {
+    min-width: 100%;
+    height: 400px;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: zoom-in; /* Zeigt an, dass das Bild klickbar ist */
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(28, 90, 147, 0.7);
+    color: white;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+    z-index: 10;
+}
+
+.slider-btn:hover {
+    background: var(--secondary-cyan);
+}
+
+.slider-btn.prev { left: 15px; }
+.slider-btn.next { right: 15px; }
+
+/* ==========================================================================
+   LIGHTBOX (Bilder groß anzeigen)
+   ========================================================================== */
+.lightbox {
+    display: none; 
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px);
+}
+
+.lightbox-content {
+    max-width: 90%;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.8);
+    animation: zoomIn 0.3s ease;
+}
+
+.close-lightbox {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-lightbox:hover {
+    color: var(--secondary-cyan);
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+    footer {
+        padding: 50px 20px 30px 20px;
+        gap: 30px;
+    }
+}
