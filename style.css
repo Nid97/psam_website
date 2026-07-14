@@ -2,10 +2,10 @@
    FARBPALETTE & GLOBALE VARIABLEN
    ========================================================================== */
 :root {
-    --primary-blue: #1c5a93;   /* Das markante Dunkelblau aus dem Logo */
-    --secondary-cyan: #6ecee6; /* Das frische Cyan/Hellblau aus dem Logo */
-    --light-cyan: #bcecf7;     /* Sehr sanftes Cyan für dezente Akzente */
-    --accent-red: #D62828;     /* Kontrastfarbe für wichtige Buttons/Ränder */
+    --primary-blue: #1c5a93;
+    --secondary-cyan: #6ecee6;
+    --light-cyan: #bcecf7;
+    --accent-red: #D62828;
     --text-color: #ffffff;
 }
 
@@ -19,7 +19,6 @@ body {
     padding: 0;
     color: var(--text-color);
     line-height: 1.6;
-    /* Der globale Hintergrund ist nun perfekt auf die Logofarben abgestimmt */
     background: linear-gradient(135deg, rgba(28, 90, 147, 0.9) 0%, rgba(28, 90, 147, 0.75) 100%), 
                 url('dinesten (2).jpeg') center/cover no-repeat fixed;
 }
@@ -27,22 +26,13 @@ body {
 /* ==========================================================================
    CUSTOM SCROLLBAR
    ========================================================================== */
-::-webkit-scrollbar {
-    width: 10px;
-}
-::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.05);
-}
-::-webkit-scrollbar-thumb {
-    background: var(--secondary-cyan);
-    border-radius: 5px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: var(--light-cyan);
-}
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); }
+::-webkit-scrollbar-thumb { background: var(--secondary-cyan); border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: var(--light-cyan); }
 
 /* ==========================================================================
-   HEADER & NAVIGATION (Glassmorphism Effect)
+   HEADER & NAVIGATION (Desktop)
    ========================================================================== */
 header {
     display: flex;
@@ -50,8 +40,8 @@ header {
     align-items: center;
     padding: 15px 5%;
     background-color: rgba(255, 255, 255, 0.07);
-    backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     position: sticky;
     top: 0;
@@ -79,11 +69,9 @@ header {
     transform: rotate(-5px) scale(1.05);
 }
 
-.hero-logo {
-    display: block;
-    margin: auto; /* Zentriert das Bild und gibt 30px Abstand nach oben und unten */
-    max-width: 500px; /* Hier kannst du die Größe anpassen, je nachdem wie es am besten aussieht */
-    height: auto;
+nav {
+    display: flex;
+    align-items: center;
 }
 
 nav a {
@@ -96,7 +84,6 @@ nav a {
     transition: color 0.3s, transform 0.3s;
 }
 
-/* Unterstrich-Animation beim Drüberschweben */
 nav a::after {
     content: '';
     position: absolute;
@@ -108,12 +95,25 @@ nav a::after {
     transition: width 0.3s ease;
 }
 
-nav a:hover {
-    color: var(--secondary-cyan);
+nav a:hover { color: var(--secondary-cyan); }
+nav a:hover::after { width: 100%; }
+
+/* Hamburger Menü Icon (Auf Desktop versteckt) */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 1001;
 }
 
-nav a:hover::after {
-    width: 100%;
+.hamburger span {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    border-radius: 3px;
+    transition: all 0.3s ease-in-out;
 }
 
 /* ==========================================================================
@@ -142,7 +142,16 @@ nav a:hover::after {
     text-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
 
-/* Pulsierender CTA Button */
+/* Dynamisches Hero Logo */
+.hero-logo {
+    display: block;
+    margin: 0 auto 30px auto;
+    width: 100%;
+    max-width: 85vw; 
+    max-height: 45vh; 
+    object-fit: contain;
+}
+
 .cta-btn {
     background: linear-gradient(90deg, var(--accent-red) 0%, #F77F00 100%);
     color: white;
@@ -154,7 +163,6 @@ nav a:hover::after {
     box-shadow: 0 6px 20px rgba(214, 40, 40, 0.4);
     transition: all 0.3s ease;
     display: inline-block;
-    letter-spacing: 0.5px;
 }
 
 .cta-btn:hover {
@@ -163,19 +171,15 @@ nav a:hover::after {
 }
 
 /* ==========================================================================
-   ALLGEMEINE SEKTIONEN & ÜBERSCHRIFTEN
+   ALLGEMEINE SEKTIONEN & DIENSTLEISTUNGEN
    ========================================================================== */
-section {
-    padding: 100px 5%;
-}
+section { padding: 100px 5%; }
 
 .section-title {
     text-align: center;
-    color: #ffffff;
     font-size: 40px;
     font-weight: 800;
     margin-bottom: 15px;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 
 .section-subtitle {
@@ -185,14 +189,6 @@ section {
     margin-bottom: 60px;
     text-transform: uppercase;
     letter-spacing: 2px;
-    font-weight: 600;
-}
-
-/* ==========================================================================
-   NEUES DIENSTLEISTUNGS-LAYOUT (Große, abwechselnde Blöcke)
-   ========================================================================== */
-.services-bg {
-    background: transparent;
 }
 
 .services-layout {
@@ -208,8 +204,8 @@ section {
     align-items: center;
     gap: 50px;
     background: rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-left: 6px solid var(--secondary-cyan);
     border-radius: 16px;
@@ -218,7 +214,6 @@ section {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Jedes zweite Element wird automatisch horizontal umgedreht (Bild links, Text rechts) */
 .service-block:nth-child(even) {
     flex-direction: row-reverse;
     border-left: 1px solid rgba(255, 255, 255, 0.15);
@@ -230,270 +225,21 @@ section {
     box-shadow: 0 15px 35px rgba(110, 206, 230, 0.25);
 }
 
-.service-content {
-    flex: 1.2;
-}
-
-.service-content h3 {
-    font-size: 28px;
-    margin-top: 0;
-    margin-bottom: 20px;
-    font-weight: 700;
-    color: #ffffff;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    padding-bottom: 12px;
-}
-
-.service-content p {
-    font-size: 17px;
-    color: rgba(255, 255, 255, 0.9);
-    margin: 0;
-    font-weight: 300;
-    line-height: 1.8;
-}
+.service-content { flex: 1.2; }
+.service-content h3 { font-size: 28px; margin-bottom: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.15); padding-bottom: 12px; }
+.service-content p { font-size: 17px; font-weight: 300; }
 
 .service-image-wrapper {
     flex: 0.8;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-    height: 320px; /* Einheitliche Höhe für alle Bilder */
+    height: 320px;
 }
-
-.service-image-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.5s ease;
-}
-
-.service-block:hover .service-image-wrapper img {
-    transform: scale(1.05);
-}
+.service-image-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.service-block:hover .service-image-wrapper img { transform: scale(1.05); }
 
 /* ==========================================================================
-   ALBUM / PORTFOLIO GRID
-   ========================================================================== */
-.album-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 25px;
-    max-width: 1250px;
-    margin: 0 auto;
-}
-
-.album-item {
-    position: relative;
-    border-radius: 14px;
-    overflow: hidden;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-    height: 280px;
-    background-color: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.album-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-    display: block;
-}
-
-.album-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(to top, rgba(28, 90, 147, 0.95) 0%, rgba(28, 90, 147, 0.4) 75%, rgba(28, 90, 147, 0) 100%);
-    padding: 30px 20px 20px 20px;
-    color: white;
-    transform: translateY(20px);
-    opacity: 0;
-    transition: all 0.4s ease;
-}
-
-.album-overlay h4 {
-    margin: 0;
-    font-size: 18px;
-    font-weight: 600;
-}
-
-.album-item:hover img {
-    transform: scale(1.08);
-}
-
-.album-item:hover .album-overlay {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-/* ==========================================================================
-   FOOTER BEREICH (An die neuen Farben angeglichen)
-   ========================================================================== */
-footer {
-    background-color: rgba(28, 90, 147, 0.85); 
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    color: white;
-    padding: 80px 5% 40px 5%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 40px;
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-footer h4 {
-    color: var(--secondary-cyan);
-    font-size: 22px;
-    margin-bottom: 25px;
-    font-weight: 700;
-    position: relative;
-}
-
-footer h4::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -8px;
-    width: 40px;
-    height: 2px;
-    background-color: var(--accent-red);
-}
-
-footer p {
-    margin: 8px 0;
-    color: rgba(255, 255, 255, 0.8);
-    font-weight: 300;
-}
-
-footer a {
-    color: #bcecf7;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-footer a:hover {
-    color: white;
-    text-decoration: underline;
-}
-
-.footer-bottom {
-    background-color: rgba(18, 60, 100, 0.95);
-    color: rgba(255, 255, 255, 0.5);
-    text-align: center;
-    padding: 20px;
-    font-size: 14px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    font-weight: 300;
-}
-
-/* ==========================================================================
-   RESPONSIVENESS & SKALIERBARKEIT (Mobil- & Tabletansichten)
-   ========================================================================== */
-@media (max-width: 992px) {
-    .hero h1 { font-size: 46px; }
-    .hero p { font-size: 18px; }
-    section { padding: 80px 5%; }
-    
-    /* Schaltet bei Mobilgeräten das seitliche Layout untereinander, um Stauchung zu verhindern */
-    .service-block, .service-block:nth-child(even) {
-        flex-direction: column;
-        padding: 30px;
-        border-left: 1px solid rgba(255, 255, 255, 0.15);
-        border-right: 1px solid rgba(255, 255, 255, 0.15);
-        border-top: 6px solid var(--secondary-cyan);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    }
-    
-    .service-image-wrapper {
-        width: 100%;
-        height: 250px;
-    }
-}
-
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        gap: 10px;
-        padding: 10px 15px;
-        text-align: center;
-        /* 'relative' statt 'sticky', damit der Header beim Scrollen verschwindet und Platz macht */
-        position: relative; 
-    }
-
-    /* Den Text neben dem Logo ausblenden, um massiv Platz zu sparen */
-    .logo span {
-        display: none; 
-    }
-
-    .logo img {
-        height: 50px; /* Logo etwas kleiner machen */
-    }
-
-    nav {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 8px;
-        width: 100%;
-    }
-
-    nav a {
-        margin-left: 0;
-        font-size: 13px;
-        padding: 6px 10px;
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 6px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    /* Hero-Sektion anpassen, damit es oben nicht klebt */
-    .hero {
-        padding: 60px 20px;
-    }
-
-    .hero h1 {
-        font-size: 34px;
-        letter-spacing: -0.5px;
-    }
-
-    .hero p {
-        font-size: 16px;
-        margin-bottom: 30px;
-    }
-
-    .cta-btn {
-        padding: 14px 30px;
-        font-size: 16px;
-    }
-
-    .section-title {
-        font-size: 30px;
-    }
-
-    .section-subtitle {
-        font-size: 13px;
-        margin-bottom: 40px;
-    }
-
-    .album-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .album-item {
-        height: 240px;
-    }
-    
-    footer {
-        padding: 50px 20px 30px 20px;
-        gap: 30px;
-    }
-}
-    /* ==========================================================================
-   SLIDESHOW / CAROUSEL
+   ALBUM / SLIDER / LIGHTBOX
    ========================================================================== */
 .slider-container {
     position: relative;
@@ -505,22 +251,9 @@ footer a:hover {
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.slider-track {
-    display: flex;
-    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.slide {
-    min-width: 100%;
-    height: 400px;
-}
-
-.slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    cursor: zoom-in; /* Zeigt an, dass das Bild klickbar ist */
-}
+.slider-track { display: flex; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
+.slide { min-width: 100%; height: 400px; }
+.slide img { width: 100%; height: 100%; object-fit: cover; cursor: zoom-in; }
 
 .slider-btn {
     position: absolute;
@@ -533,110 +266,113 @@ footer a:hover {
     cursor: pointer;
     font-size: 24px;
     border-radius: 50%;
-    transition: background 0.3s ease;
     z-index: 10;
 }
-
-.slider-btn:hover {
-    background: var(--secondary-cyan);
-}
-
+.slider-btn:hover { background: var(--secondary-cyan); }
 .slider-btn.prev { left: 15px; }
 .slider-btn.next { right: 15px; }
 
-/* ==========================================================================
-   LIGHTBOX (Bilder groß anzeigen)
-   ========================================================================== */
 .lightbox {
     display: none; 
     position: fixed;
     z-index: 9999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
+    left: 0; top: 0; width: 100%; height: 100%;
     background-color: rgba(0, 0, 0, 0.9);
-    justify-content: center;
-    align-items: center;
+    justify-content: center; align-items: center;
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
 }
+.lightbox-content { max-width: 90%; max-height: 90vh; border-radius: 8px; animation: zoomIn 0.3s ease; }
+.close-lightbox { position: absolute; top: 20px; right: 35px; color: white; font-size: 40px; cursor: pointer; }
+@keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
-.lightbox-content {
-    max-width: 90%;
-    max-height: 90vh;
-    border-radius: 8px;
-    box-shadow: 0 0 30px rgba(0,0,0,0.8);
-    animation: zoomIn 0.3s ease;
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+footer {
+    background-color: rgba(28, 90, 147, 0.85); 
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    padding: 80px 5% 40px 5%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
+footer h4 { color: var(--secondary-cyan); margin-bottom: 25px; position: relative; }
+footer h4::after { content: ''; position: absolute; left: 0; bottom: -8px; width: 40px; height: 2px; background-color: var(--accent-red); }
+footer a { color: #bcecf7; text-decoration: none; }
+footer a:hover { color: white; text-decoration: underline; }
+.footer-bottom { background-color: rgba(18, 60, 100, 0.95); text-align: center; padding: 20px; font-size: 14px; color: rgba(255, 255, 255, 0.5); }
 
-.close-lightbox {
-    position: absolute;
-    top: 20px;
-    right: 35px;
-    color: white;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: color 0.3s;
-}
 
-.close-lightbox:hover {
-    color: var(--secondary-cyan);
-}
-
-@keyframes zoomIn {
-    from { transform: scale(0.8); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
-
-    footer {
-        padding: 50px 20px 30px 20px;
-        gap: 30px;
+/* ==========================================================================
+   RESPONSIVE DESIGN (Tablets & Mobile)
+   ========================================================================== */
+@media (max-width: 992px) {
+    .hero h1 { font-size: 46px; }
+    .hero p { font-size: 18px; }
+    
+    /* Layout für Dienstleistungen untereinander statt nebeneinander */
+    .service-block, .service-block:nth-child(even) {
+        flex-direction: column;
+        padding: 30px;
+        border-left: 1px solid rgba(255, 255, 255, 0.15);
+        border-right: 1px solid rgba(255, 255, 255, 0.15);
+        border-top: 6px solid var(--secondary-cyan);
     }
+    .service-image-wrapper { width: 100%; height: 250px; }
 }
-/* --- Radikaler Mobile Fix für den Header --- */
+
 @media screen and (max-width: 768px) {
+    /* Header & Navigation (Hamburger Menü) */
     header {
-        position: relative !important; /* Entfernt das sticky Verhalten */
-        display: flex !important;
-        flex-direction: column !important; /* Alles untereinander */
-        align-items: center !important;
-        justify-content: center !important;
-        padding: 15px 10px !important;
-        height: auto !important; /* Verhindert, dass der Header den Bildschirm blockiert */
+        padding: 15px 20px;
     }
 
-    /* Das Logo in die Mitte zentrieren */
     .logo {
-        display: flex !important;
-        justify-content: center !important;
-        width: 100% !important;
-        margin-bottom: 10px !important;
+        margin: 0 auto; 
+        padding-left: 30px; 
     }
 
-    .logo img {
-        max-height: 60px !important;
-    }
+    .logo img { height: 50px; }
+    .logo span { display: none; } /* Text verstecken */
 
-    /* Den Text "Professionele Schoonmaak AM" neben dem Logo verstecken, 
-       das spart den meisten Platz! */
-    .logo span {
-        display: none !important; 
-    }
+    .hamburger { display: flex; }
 
-    /* Navigation als kleines Raster anordnen */
+    /* Slide-in Menü */
     nav {
-        display: flex !important;
-        flex-wrap: wrap !important;
-        justify-content: center !important;
-        width: 100% !important;
-        gap: 5px !important;
+        position: fixed;
+        top: 0;
+        right: -100%; 
+        width: 75%; 
+        height: 100vh;
+        background-color: rgba(28, 90, 147, 0.98); 
+        -webkit-backdrop-filter: blur(15px);
+        backdrop-filter: blur(15px);
+        flex-direction: column;
+        justify-content: center;
+        transition: right 0.4s ease;
+        box-shadow: -5px 0 20px rgba(0,0,0,0.5);
     }
 
-    nav a {
-        font-size: 14px !important;
-        padding: 8px 12px !important;
-        margin: 0 !important;
-        text-align: center !important;
-    }
+    nav.active { right: 0; }
+    
+    nav a { margin: 20px 0; font-size: 22px; padding: 10px 20px; }
+    nav a::after { display: none; } /* Unterstrich-Animation im Mobile-Menü ausblenden */
+
+    /* Hamburger Animation zum "X" */
+    .hamburger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+    /* Anpassungen für kleinere Bildschirme */
+    .hero { padding: 60px 20px; }
+    .hero h1 { font-size: 34px; }
+    .hero p { font-size: 16px; margin-bottom: 30px; }
+    .cta-btn { padding: 14px 30px; font-size: 16px; }
+    .section-title { font-size: 30px; }
+    
+    .slide { height: 250px; }
+    footer { padding: 50px 20px 30px 20px; gap: 30px; }
 }
