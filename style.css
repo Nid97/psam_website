@@ -325,6 +325,31 @@ section { padding: 100px 5%; }
     margin: 0;
 }
 
+@media (max-width: 600px) {
+    .stats-container {
+        /* Erzwingt 2 Spalten nebeneinander auf dem Handy */
+        grid-template-columns: repeat(2, 1fr);
+        /* Reduziert den Abstand zwischen den Elementen */
+        gap: 20px; 
+    }
+
+    .stat-item {
+        /* Etwas weniger Innenabstand zur blauen Linie */
+        padding-left: 12px; 
+    }
+
+    .stat-item h3 {
+        /* Kleinere Zahlen für mobile Ansicht */
+        font-size: 1.8rem; 
+        margin-bottom: 4px;
+    }
+
+    .stat-item p {
+        /* Kleinerer Text für mobile Ansicht */
+        font-size: 0.9rem; 
+    }
+}
+
 /* ==========================================================================
 Styling für das Kundenfeedback
 ========================================================================== */
