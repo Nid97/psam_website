@@ -116,35 +116,37 @@
         </div>
     </section>
 
-    <section id="album">
+<section id="album">
         <h2 class="section-title">Ons Album</h2>
         <div class="section-subtitle">Fotogalerij van onze schitterende resultaten</div>
         
-<div class="slider-container">
-    <div class="slider-track" id="sliderTrack">
-        <!-- Bilder mit der Klasse 'lightbox-trigger' für das Vergrößern -->
-        <div class="slide"><img src="assets/album (1).jpeg" class="lightbox-trigger"></div>
-        <div class="slide"><img src="assets/album (2).jpeg" class="lightbox-trigger"></div>
-        <div class="slide"><img src="assets/album (3).jpeg" class="lightbox-trigger"></div>
-        <div class="slide"><img src="assets/album (4).jpeg" class="lightbox-trigger"></div>
-        <div class="slide"><img src="assets/album (5).jpeg" class="lightbox-trigger"></div>
-        <div class="slide"><img src="assets/album (6).jpeg" class="lightbox-trigger"></div>
-        <div class="slide"><img src="assets/album (7).jpeg" class="lightbox-trigger"></div>
-        <div class="slide"><img src="assets/album (8).jpeg" class="lightbox-trigger"></div>
-        <div class="slide"><img src="assets/album (9).jpeg" class="lightbox-trigger"></div>
-        <div class="slide"><img src="assets/album (10).jpeg" class="lightbox-trigger"></div>
-    </div>
-    
-    <!-- Manuelle Wisch-Buttons -->
-    <button class="slider-btn prev" onclick="moveSlide(-1)">&#10094;</button>
-    <button class="slider-btn next" onclick="moveSlide(1)">&#10095;</button>
-</div>
+        <div class="slider-container">
+            <div class="slider-track" id="sliderTrack">
+                <!-- Bilder mit der Klasse 'lightbox-trigger' für das Vergrößern -->
+                <div class="slide"><img src="assets/album (1).jpeg" class="lightbox-trigger" alt="Schoonmaak resultaat 1"></div>
+                <div class="slide"><img src="assets/album (2).jpeg" class="lightbox-trigger" alt="Schoonmaak resultaat 2"></div>
+                <div class="slide"><img src="assets/album (3).jpeg" class="lightbox-trigger" alt="Schoonmaak resultaat 3"></div>
+                <div class="slide"><img src="assets/album (4).jpeg" class="lightbox-trigger" alt="Schoonmaak resultaat 4"></div>
+                <div class="slide"><img src="assets/album (5).jpeg" class="lightbox-trigger" alt="Schoonmaak resultaat 5"></div>
+                <div class="slide"><img src="assets/album (6).jpeg" class="lightbox-trigger" alt="Schoonmaak resultaat 6"></div>
+                <div class="slide"><img src="assets/album (7).jpeg" class="lightbox-trigger" alt="Schoonmaak resultaat 7"></div>
+                <div class="slide"><img src="assets/album (8).jpeg" class="lightbox-trigger" alt="Schoonmaak resultaat 8"></div>
+                <div class="slide"><img src="assets/album (9).jpeg" class="lightbox-trigger" alt="Schoonmaak resultaat 9"></div>
+                <div class="slide"><img src="assets/album (10).jpeg" class="lightbox-trigger" alt="Schoonmaak resultaat 10"></div>
+            </div>
+        </div>
 
-<!-- Lightbox Modal für den Zoom-Effekt -->
-<div id="lightboxModal" class="lightbox">
-    <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
-    <img class="lightbox-content" id="lightboxImg">
-</div>
+        <!-- NEU: Schöne Buttons unter dem Slider statt im Bild -->
+        <div class="album-controls">
+            <button class="modern-slider-btn" onclick="moveSlide(-1)">&#10094; Vorige</button>
+            <button class="modern-slider-btn" onclick="moveSlide(1)">Volgende &#10095;</button>
+        </div>
+
+        <!-- Lightbox Modal für den Zoom-Effekt -->
+        <div id="lightboxModal" class="lightbox">
+            <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+            <img class="lightbox-content" id="lightboxImg" alt="Vergrößertes Bild">
+        </div>
     </section>
 
     <!-- Statistik-Bereich Start -->

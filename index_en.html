@@ -107,31 +107,36 @@
         </div>
     </section>
 
-    <section id="album">
+<section id="album">
         <h2 class="section-title">Our Album</h2>
         <div class="section-subtitle">Photo gallery of our brilliant results</div>
         
         <div class="slider-container">
             <div class="slider-track" id="sliderTrack">
-                <div class="slide"><img src="assets/album (1).jpeg" class="lightbox-trigger"></div>
-        <div class="slide"><img src="assets/album (2).jpeg" class="lightbox-trigger"></div>
-        <div class="slide"><img src="assets/album (3).jpeg" class="lightbox-trigger"></div>
-        <div class="slide"><img src="assets/album (4).jpeg" class="lightbox-trigger"></div>
-        <div class="slide"><img src="assets/album (5).jpeg" class="lightbox-trigger"></div>
-        <div class="slide"><img src="assets/album (6).jpeg" class="lightbox-trigger"></div>
-        <div class="slide"><img src="assets/album (7).jpeg" class="lightbox-trigger"></div>
-        <div class="slide"><img src="assets/album (8).jpeg" class="lightbox-trigger"></div>
-        <div class="slide"><img src="assets/album (9).jpeg" class="lightbox-trigger"></div>
-        <div class="slide"><img src="assets/album (10).jpeg" class="lightbox-trigger"></div>
+                <!-- Bilder mit der Klasse 'lightbox-trigger' für das Vergrößern -->
+                <div class="slide"><img src="assets/album (1).jpeg" class="lightbox-trigger" alt="Final Cleaning Result 1"></div>
+                <div class="slide"><img src="assets/album (2).jpeg" class="lightbox-trigger" alt="Final Cleaning Result 2"></div>
+                <div class="slide"><img src="assets/album (3).jpeg" class="lightbox-trigger" alt="Final Cleaning Result 3"></div>
+                <div class="slide"><img src="assets/album (4).jpeg" class="lightbox-trigger" alt="Final Cleaning Result 4"></div>
+                <div class="slide"><img src="assets/album (5).jpeg" class="lightbox-trigger" alt="Final Cleaning Result 5"></div>
+                <div class="slide"><img src="assets/album (6).jpeg" class="lightbox-trigger" alt="Final Cleaning Result 6"></div>
+                <div class="slide"><img src="assets/album (7).jpeg" class="lightbox-trigger" alt="Final Cleaning Result 7"></div>
+                <div class="slide"><img src="assets/album (8).jpeg" class="lightbox-trigger" alt="Final Cleaning Result 8"></div>
+                <div class="slide"><img src="assets/album (9).jpeg" class="lightbox-trigger" alt="Final Cleaning Result 9"></div>
+                <div class="slide"><img src="assets/album (10).jpeg" class="lightbox-trigger" alt="Final Cleaning Result 10"></div>
             </div>
-            
-            <button class="slider-btn prev" onclick="moveSlide(-1)">&#10094;</button>
-            <button class="slider-btn next" onclick="moveSlide(1)">&#10095;</button>
         </div>
 
+        <!-- NEU: Schöne Buttons unter dem Slider statt im Bild -->
+        <div class="album-controls">
+            <button class="modern-slider-btn" onclick="moveSlide(-1)">&#10094; Previous</button>
+            <button class="modern-slider-btn" onclick="moveSlide(1)">Next &#10095;</button>
+        </div>
+
+        <!-- Lightbox Modal für den Zoom-Effekt -->
         <div id="lightboxModal" class="lightbox">
             <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
-            <img class="lightbox-content" id="lightboxImg">
+            <img class="lightbox-content" id="lightboxImg" alt=" enlarged image">
         </div>
     </section>
 
