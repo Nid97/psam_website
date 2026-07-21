@@ -135,6 +135,74 @@
         </div>
     </section>
 
+    <!-- Statistik-Bereich Start -->
+<section class="stats-section">
+    <div class="stats-container">
+        
+        <div class="stat-item">
+            <h3>10+</h3>
+            <p>Years of experience</p>
+        </div>
+        
+        <div class="stat-item">
+            <h3>100%</h3>
+            <p>Customer satisfaction</p>
+        </div>
+        
+        <div class="stat-item">
+            <h3>7/7</h3>
+            <p>Flexibility</p>
+        </div>
+
+        <div class="stat-item">
+            <h3>100%</h3>
+            <p>Environmentally friendly</p>
+        </div>
+
+    </div>
+</section>
+<!-- Statistik-Bereich Ende -->
+
+<!-- Klantenfeedback-Bereich Start -->
+<section class="feedback-section">
+    <div class="feedback-container">
+        <h2 class="feedback-title">What Our Customers Say</h2>
+        
+        <div class="feedback-slider">
+            <!-- Feedback 1 -->
+            <div class="feedback-slide active">
+                <p class="feedback-text">"Good and friendly team, very organized and fast with the cleaning. Definitely a recommendation!"</p>
+                <p class="feedback-author">- Sander van der Berg</p>
+            </div>
+            
+            <!-- Feedback 2 -->
+            <div class="feedback-slide">
+                <p class="feedback-text">"Fantastic service! Our floors look like new again. Thank you very much for the professional work."</p>
+                <p class="feedback-author">- Lotte de Jong</p>
+            </div>
+            
+            <!-- Feedback 3 -->
+            <div class="feedback-slide">
+                <p class="feedback-text">"Reliable and thorough. They have made everything perfectly clean after our renovation. We are very satisfied."</p>
+                <p class="feedback-author">- Daan Visser</p>
+            </div>
+            
+            <!-- Feedback 4 -->
+            <div class="feedback-slide">
+                <p class="feedback-text">"Always on time, and they work with great attention to detail. It's also great that they use eco-friendly products!"</p>
+                <p class="feedback-author">- Sophie Bakker</p>
+            </div>
+            
+            <!-- Feedback 5 -->
+            <div class="feedback-slide">
+                <p class="feedback-text">"Great experience with Professionele Schoonmaak AM. Communication was clear and the result is beautiful. Excellent!"</p>
+                <p class="feedback-author">- Bram Jansen</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Klantenfeedback-Bereich Ende -->
+
     <footer id="contact">
         <div>
             <h4>About AM Cleaning</h4>
@@ -159,42 +227,89 @@
         &copy; 2026 Professionele Schoonmaak AM. All rights reserved.
     </div>
 
-    <script>
+<script>
+    // Slideshow Logik
+    let currentSlide = 0;
+    const track = document.getElementById('sliderTrack');
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+
+    function updateSlider() {
+        track.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+
+    function moveSlide(direction) {
+        currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+        updateSlider();
+    }
+
+    // Automatisches Scrollen alle 3 Sekunden
+    let slideInterval = setInterval(() => moveSlide(1), 3000);
+
+    // Pause bei Hover (optional, aber nutzerfreundlich)
+    document.querySelector('.slider-container').addEventListener('mouseenter', () => clearInterval(slideInterval));
+    document.querySelector('.slider-container').addEventListener('mouseleave', () => {
+        slideInterval = setInterval(() => moveSlide(1), 3000);
+    });
+
+    // Lightbox Logik
+    const lightbox = document.getElementById('lightboxModal');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const triggers = document.querySelectorAll('.lightbox-trigger');
+
+    triggers.forEach(img => {
+        img.addEventListener('click', function() {
+            lightbox.style.display = "flex";
+            lightboxImg.src = this.src;
+        });
+    });
+
+    function closeLightbox() {
+        lightbox.style.display = "none";
+    }
+</script>
+<script>
+    // Hamburger Menu Logik
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+
+    // Menü schließen, wenn ein Link geklickt wird
+    document.querySelectorAll('#nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
+    });
+</script>
+<script>
+    // JavaScript für den automatischen Feedback-Slider
+document.addEventListener("DOMContentLoaded", function() {
+    const slides = document.querySelectorAll(".feedback-slide");
+    
+    // Prüfen, ob Slides vorhanden sind, um Fehler auf anderen Unterseiten zu vermeiden
+    if (slides.length > 0) {
         let currentSlide = 0;
-        const track = document.getElementById('sliderTrack');
-        const slides = document.querySelectorAll('.slide');
-        const totalSlides = slides.length;
 
-        function updateSlider() {
-            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+        function nextSlide() {
+            // Aktuelles Slide ausblenden
+            slides[currentSlide].classList.remove("active");
+            
+            // Zum nächsten Slide wechseln (und wieder bei 0 anfangen, wenn das Ende erreicht ist)
+            currentSlide = (currentSlide + 1) % slides.length;
+            
+            // Neues Slide einblenden
+            slides[currentSlide].classList.add("active");
         }
 
-        function moveSlide(direction) {
-            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
-            updateSlider();
-        }
-
-        let slideInterval = setInterval(() => moveSlide(1), 3000);
-
-        document.querySelector('.slider-container').addEventListener('mouseenter', () => clearInterval(slideInterval));
-        document.querySelector('.slider-container').addEventListener('mouseleave', () => {
-            slideInterval = setInterval(() => moveSlide(1), 3000);
-        });
-
-        const lightbox = document.getElementById('lightboxModal');
-        const lightboxImg = document.getElementById('lightboxImg');
-        const triggers = document.querySelectorAll('.lightbox-trigger');
-
-        triggers.forEach(img => {
-            img.addEventListener('click', function() {
-                lightbox.style.display = "flex";
-                lightboxImg.src = this.src;
-            });
-        });
-
-        function closeLightbox() {
-            lightbox.style.display = "none";
-        }
-    </script>
+        // Intervall auf 3000 Millisekunden (3 Sekunden) setzen
+        setInterval(nextSlide, 3000);
+    }
+});
+</script>
 </body>
 </html>

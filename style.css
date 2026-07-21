@@ -289,6 +289,110 @@ section { padding: 100px 5%; }
 @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
 /* ==========================================================================
+   Styling für den Statistik-Bereich
+   ========================================================================== */
+.stats-section {
+    padding: 60px 20px;
+    background-color: #f8f9fa; /* Sehr helles Grau, ähnlich wie im Screenshot */
+}
+
+.stats-container {
+    display: grid;
+    /* Erstellt automatisch so viele Spalten wie passen, ideal für Responsive Design */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.stat-item {
+    /* Die blaue Linie an der Seite */
+    border-left: 4px solid #1a4b82; /* Passe diesen HEX-Code an das Blau im Logo an */
+    padding-left: 20px;
+}
+
+.stat-item h3 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #111;
+    margin: 0 0 8px 0;
+    line-height: 1;
+}
+
+.stat-item p {
+    font-size: 1.1rem;
+    color: #666;
+    margin: 0;
+}
+
+/* ==========================================================================
+Styling für das Kundenfeedback
+========================================================================== */
+.feedback-section {
+    padding: 60px 20px;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.feedback-title {
+    font-size: 2rem;
+    color: #1a4b82; /* Passend zum Blau im Logo */
+    margin-bottom: 40px;
+}
+
+.feedback-container {
+    max-width: 800px;
+    margin: 0 auto;
+    /* position, height und overflow wurden hier entfernt */
+}
+
+/* Neue Regel für den Slider-Wrapper hinzufügen */
+.feedback-slider {
+    position: relative;
+    height: 150px; 
+    overflow: hidden;
+}
+
+.feedback-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    pointer-events: none;
+}
+
+.feedback-slide.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.feedback-text {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #333;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.feedback-author {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #1a4b82;
+}
+
+/* Responsive Anpassung für kleinere Bildschirme */
+@media (max-width: 600px) {
+    .feedback-slider {
+        height: 200px; /* Klasse hier zu .feedback-slider geändert */
+    }
+    .feedback-text {
+        font-size: 1.1rem;
+    }
+}
+
+/* ==========================================================================
    FOOTER
    ========================================================================== */
 footer {
@@ -318,7 +422,7 @@ footer a:hover { color: white; text-decoration: underline; }
     /* Layout für Dienstleistungen untereinander statt nebeneinander */
     .service-block, .service-block:nth-child(even) {
         flex-direction: column;
-        padding: 30px;
+        padding: 30px; 
         border-left: 1px solid rgba(255, 255, 255, 0.15);
         border-right: 1px solid rgba(255, 255, 255, 0.15);
         border-top: 6px solid var(--secondary-cyan);

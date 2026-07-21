@@ -147,6 +147,74 @@
 </div>
     </section>
 
+    <!-- Statistik-Bereich Start -->
+<section class="stats-section">
+    <div class="stats-container">
+        
+        <div class="stat-item">
+            <h3>10+</h3>
+            <p>Jaar ervaring</p>
+        </div>
+        
+        <div class="stat-item">
+            <h3>100%</h3>
+            <p>Klanttevredenheid</p>
+        </div>
+        
+        <div class="stat-item">
+            <h3>7/7</h3>
+            <p>Flexibel inzetbaar</p>
+        </div>
+
+        <div class="stat-item">
+            <h3>100%</h3>
+            <p>Milieuvriendelijk</p>
+        </div>
+
+    </div>
+</section>
+<!-- Statistik-Bereich Ende -->
+
+<!-- Klantenfeedback-Bereich Start -->
+<section class="feedback-section">
+    <div class="feedback-container">
+        <h2 class="feedback-title">Wat onze klanten zeggen</h2>
+        
+        <div class="feedback-slider">
+            <!-- Feedback 1 -->
+            <div class="feedback-slide active">
+                <p class="feedback-text">"Goed en vriendelijk team, zeer georganiseerd en snel met de schoonmaak. Zeker een aanrader!"</p>
+                <p class="feedback-author">- Sander van der Berg</p>
+            </div>
+            
+            <!-- Feedback 2 -->
+            <div class="feedback-slide">
+                <p class="feedback-text">"Fantastische service! Onze vloeren zien er weer uit als nieuw. Heel erg bedankt voor het professionele werk."</p>
+                <p class="feedback-author">- Lotte de Jong</p>
+            </div>
+            
+            <!-- Feedback 3 -->
+            <div class="feedback-slide">
+                <p class="feedback-text">"Betrouwbaar en grondig. Ze hebben na onze renovatie alles perfect schoongemaakt. Wij zijn zeer tevreden."</p>
+                <p class="feedback-author">- Daan Visser</p>
+            </div>
+            
+            <!-- Feedback 4 -->
+            <div class="feedback-slide">
+                <p class="feedback-text">"Altijd op tijd en ze werken met veel oog voor detail. Ook fijn dat ze milieuvriendelijke producten gebruiken!"</p>
+                <p class="feedback-author">- Sophie Bakker</p>
+            </div>
+            
+            <!-- Feedback 5 -->
+            <div class="feedback-slide">
+                <p class="feedback-text">"Geweldige ervaring met Professionele Schoonmaak AM. De communicatie was helder en het resultaat is prachtig. Top!"</p>
+                <p class="feedback-author">- Bram Jansen</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Klantenfeedback-Bereich Ende -->
+
     <footer id="contact">
         <div>
             <h4>Over AM Schoonmaken</h4>
@@ -229,6 +297,31 @@
             navMenu.classList.remove('active');
         });
     });
+</script>
+<script>
+    // JavaScript für den automatischen Feedback-Slider
+document.addEventListener("DOMContentLoaded", function() {
+    const slides = document.querySelectorAll(".feedback-slide");
+    
+    // Prüfen, ob Slides vorhanden sind, um Fehler auf anderen Unterseiten zu vermeiden
+    if (slides.length > 0) {
+        let currentSlide = 0;
+
+        function nextSlide() {
+            // Aktuelles Slide ausblenden
+            slides[currentSlide].classList.remove("active");
+            
+            // Zum nächsten Slide wechseln (und wieder bei 0 anfangen, wenn das Ende erreicht ist)
+            currentSlide = (currentSlide + 1) % slides.length;
+            
+            // Neues Slide einblenden
+            slides[currentSlide].classList.add("active");
+        }
+
+        // Intervall auf 3000 Millisekunden (3 Sekunden) setzen
+        setInterval(nextSlide, 3000);
+    }
+});
 </script>
 </body>
 </html>
